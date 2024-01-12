@@ -18,6 +18,7 @@ int main()
 	{	
 		if(data<999)
 		{	
+			alt_printf("%i\n",data);
 			if(data>10)
 			{	
 				data_tab[i] = data % 10;
@@ -25,13 +26,12 @@ int main()
 				i = i+1;
 			}
 			data_tab[i]=data;
-			
+			i=0;
 			IOWR_ALTERA_AVALON_PIO_DATA(SEG1_BASE,data_tab[0]);
 			IOWR_ALTERA_AVALON_PIO_DATA(SEG2_BASE,data_tab[1]);
 			IOWR_ALTERA_AVALON_PIO_DATA(SEG3_BASE,data_tab[2]);
 			
 			data++;
-			alt_printf("%d",data);
 			usleep(200000);
 			
 		}else{data=0;}
