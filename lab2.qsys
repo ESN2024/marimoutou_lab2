@@ -21,7 +21,7 @@
    {
       datum baseAddress
       {
-         value = "135200";
+         value = "135232";
          type = "String";
       }
    }
@@ -37,7 +37,7 @@
    {
       datum baseAddress
       {
-         value = "135184";
+         value = "135216";
          type = "String";
       }
    }
@@ -53,7 +53,7 @@
    {
       datum baseAddress
       {
-         value = "135168";
+         value = "135200";
          type = "String";
       }
    }
@@ -77,7 +77,7 @@
    {
       datum baseAddress
       {
-         value = "135216";
+         value = "135248";
          type = "String";
       }
    }
@@ -110,6 +110,22 @@
       datum baseAddress
       {
          value = "65536";
+         type = "String";
+      }
+   }
+   element timer_0
+   {
+      datum _sortIndex
+      {
+         value = "7";
+         type = "int";
+      }
+   }
+   element timer_0.s1
+   {
+      datum baseAddress
+      {
+         value = "135168";
          type = "String";
       }
    }
@@ -242,7 +258,7 @@
   <parameter name="dataAddrWidth" value="18" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x10000' end='0x19C40' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x20800' end='0x21000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='SEG3.s1' start='0x21000' end='0x21010' type='altera_avalon_pio.s1' /><slave name='SEG2.s1' start='0x21010' end='0x21020' type='altera_avalon_pio.s1' /><slave name='SEG1.s1' start='0x21020' end='0x21030' type='altera_avalon_pio.s1' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x21030' end='0x21038' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x10000' end='0x19C40' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x20800' end='0x21000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='timer_0.s1' start='0x21000' end='0x21020' type='altera_avalon_timer.s1' /><slave name='SEG3.s1' start='0x21020' end='0x21030' type='altera_avalon_pio.s1' /><slave name='SEG2.s1' start='0x21030' end='0x21040' type='altera_avalon_pio.s1' /><slave name='SEG1.s1' start='0x21040' end='0x21050' type='altera_avalon_pio.s1' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x21050' end='0x21058' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -288,7 +304,7 @@
   <parameter name="instruction_master_high_performance_paddr_size" value="0" />
   <parameter name="instruction_master_paddr_base" value="0" />
   <parameter name="instruction_master_paddr_size" value="0" />
-  <parameter name="internalIrqMaskSystemInfo" value="1" />
+  <parameter name="internalIrqMaskSystemInfo" value="3" />
   <parameter name="io_regionbase" value="0" />
   <parameter name="io_regionsize" value="0" />
   <parameter name="master_addr_map" value="false" />
@@ -432,13 +448,25 @@
   <parameter name="useShallowMemBlocks" value="false" />
   <parameter name="writable" value="true" />
  </module>
+ <module name="timer_0" kind="altera_avalon_timer" version="18.1" enabled="1">
+  <parameter name="alwaysRun" value="false" />
+  <parameter name="counterSize" value="32" />
+  <parameter name="fixedPeriod" value="false" />
+  <parameter name="period" value="1" />
+  <parameter name="periodUnits" value="MSEC" />
+  <parameter name="resetOutput" value="false" />
+  <parameter name="snapshot" value="true" />
+  <parameter name="systemFrequency" value="50000000" />
+  <parameter name="timeoutPulseOutput" value="false" />
+  <parameter name="watchdogPulse" value="2" />
+ </module>
  <connection
    kind="avalon"
    version="18.1"
    start="nios2_gen2_0.data_master"
    end="jtag_uart_0.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00021030" />
+  <parameter name="baseAddress" value="0x00021050" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -465,7 +493,7 @@
    start="nios2_gen2_0.data_master"
    end="SEG1.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00021020" />
+  <parameter name="baseAddress" value="0x00021040" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -474,7 +502,7 @@
    start="nios2_gen2_0.data_master"
    end="SEG2.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00021010" />
+  <parameter name="baseAddress" value="0x00021030" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -482,6 +510,15 @@
    version="18.1"
    start="nios2_gen2_0.data_master"
    end="SEG3.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00021020" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2_0.data_master"
+   end="timer_0.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x00021000" />
   <parameter name="defaultConnection" value="false" />
@@ -509,6 +546,7 @@
  <connection kind="clock" version="18.1" start="clk_0.clk" end="SEG1.clk" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="SEG2.clk" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="SEG3.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="timer_0.clk" />
  <connection
    kind="clock"
    version="18.1"
@@ -520,6 +558,13 @@
    start="nios2_gen2_0.irq"
    end="jtag_uart_0.irq">
   <parameter name="irqNumber" value="0" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="18.1"
+   start="nios2_gen2_0.irq"
+   end="timer_0.irq">
+  <parameter name="irqNumber" value="1" />
  </connection>
  <connection
    kind="reset"
@@ -534,6 +579,11 @@
  <connection kind="reset" version="18.1" start="clk_0.clk_reset" end="SEG1.reset" />
  <connection kind="reset" version="18.1" start="clk_0.clk_reset" end="SEG2.reset" />
  <connection kind="reset" version="18.1" start="clk_0.clk_reset" end="SEG3.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="timer_0.reset" />
  <connection
    kind="reset"
    version="18.1"
