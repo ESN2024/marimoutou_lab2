@@ -1,4 +1,4 @@
-# marimoutou_lab2
+# ESN11 - marimoutou_lab2
 ## Introduction
 Pour ce 2éme labo on se propose d'utiliser un bloc pérsonnalisée avec nos bloc IP déja présents sous QSYS. 
 On utilisera ici les afficheurs 7 segments présents sur la carte ainsi qu'un timer qui générera des interruptions de façon périodique. 
