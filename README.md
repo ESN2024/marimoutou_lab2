@@ -49,3 +49,4 @@ https://github.com/ESN2024/marimoutou_lab2/assets/97475510/33cb8c13-0884-4ff7-84
 
 ## Conclusion
 En conclusion, ce TP s'est déroulé beaucoup plus facilement que le premier, on a utiliser un bloc vhdl personnalisé mais il a était facile de le relier à notre description QSYS.
+Changer la période de comptage de façon logiciel était la partie la plus compliqué de ce TP, mais en utilisant le `nios2-terminal`et verifié les registres ça à était assez simple.
