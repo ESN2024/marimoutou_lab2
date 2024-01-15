@@ -40,6 +40,7 @@ Le fichier `display7seg.c` contient un compteur simple on a une variable cpt qui
 
 ### Compteur avec interruptions
 Le fichier `timer.c` contient un compteur cadencé par un timer qui génere une interruption toute les *500 ms*, cette interruption créer par la fonction `alt_irq_register()` vient appeler une fonction `timer_irq()` où on vient incrémenter une variable cpt qui est ensuite découper et afficher comme dans le code précédent.
+J'ai également rajouter la possibilité de changer la vitesse du compteur en C en écrivant directement dans les registre *periodl* et *periodh* grâce aux macros `IOWR_ALTERA_AVALON_TIMER_PERIODH` et `IOWR_ALTERA_AVALON_TIMER_PERIODH` .
 
 #### Demonstration
 
