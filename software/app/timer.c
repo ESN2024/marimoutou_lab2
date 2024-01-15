@@ -11,11 +11,12 @@
 #include "sys/alt_sys_init.h"
 
 uint32_t cpt=0;
-
+int status;
 
 static void timer_irq(void *Context)
 {
 	//alt_printf("TIC\n");
+	//alt_printf("status = %x\n",status);
 	uint8_t data[3]={0,0,0};
 	
 	if(cpt <999)
@@ -46,15 +47,21 @@ static void timer_irq(void *Context)
 int main()
 {
 	// Init Timer
+	int control=IORD_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE);
+
+
+	IOWR_ALTERA_AVALON_TIMER_PERIODH(TIMER_0_BASE, 0x010111110101);
+	IOWR_ALTERA_AVALON_TIMER_PERIODL(TIMER_0_BASE,1110000100000000);
 	
-	//IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE, 0b1000);
-	//IOWR_ALTERA_AVALON_TIMER_PERIODL(TIMER_0_BASE,100);
-	//IOWR_ALTERA_AVALON_TIMER_PERIODH(TIMER_0_BASE, 100);
-	//IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE, 0b0100);
+	IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE,control | 0b100);
 
 
 	// Register IRQ
 	alt_irq_register(TIMER_0_IRQ,NULL,timer_irq);
+	
+	
+	status=IORD_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE);
+
 	
 	while(1){}
 	return 0;
