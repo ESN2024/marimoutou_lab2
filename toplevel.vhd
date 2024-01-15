@@ -4,8 +4,8 @@ use IEEE.numeric_std.all;
 
 entity toplevel is
 	port (
-		CLK      : in  std_logic                    := '0'; --   clk.clk
-		RESET : in  std_logic                    := '0'; -- reset.reset_n
+		CLK      : in  std_logic := '0'; 					--   clk.clk
+		RESET : in  std_logic  := '0'; 					-- reset.reset_n
 		SEG1   : out std_logic_vector(7 downto 0);         --  seg1.export
 		SEG2   : out std_logic_vector(7 downto 0);        --  seg2.export
 		SEG3   : out std_logic_vector(7 downto 0)         --  seg3.export
@@ -16,8 +16,8 @@ architecture rtl of toplevel is
 
 	component lab2 is
 		port (
-			clk_clk       : in  std_logic                    := 'X'; -- clk
-			reset_reset_n : in  std_logic                    := 'X'; -- reset_n
+			clk_clk       : in  std_logic := 'X'; 							-- clk
+			reset_reset_n : in  std_logic := 'X'; 							-- reset_n
 			seg1_export   : out std_logic_vector(3 downto 0);         -- export
 			seg2_export   : out std_logic_vector(3 downto 0);       -- export
 			seg3_export   : out std_logic_vector(3 downto 0)         -- export
