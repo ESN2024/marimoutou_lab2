@@ -21,7 +21,7 @@ static void timer_irq(void *Context)
 	if(cpt <999)
 	{
 		
-		if(cpt>=10)
+		if(cpt>=10)   //divide cpt by units, tens, hundreds
 		{	
 			data[0] = cpt % 10;
 			data[1] =  (cpt/10) % 10;
@@ -29,6 +29,7 @@ static void timer_irq(void *Context)
 			
 		}else{data[0]=cpt;}
 		
+		// Write on BCD 7 SEGMENTS
 		IOWR_ALTERA_AVALON_PIO_DATA(SEG1_BASE,data[0]);
 		IOWR_ALTERA_AVALON_PIO_DATA(SEG2_BASE,data[1]);
 		IOWR_ALTERA_AVALON_PIO_DATA(SEG3_BASE,data[2]);
@@ -38,7 +39,7 @@ static void timer_irq(void *Context)
 	}
 	else{cpt=0;}
 	
-	
+	// Clear Interrupt
 	IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0b1);
 }
 
