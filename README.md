@@ -26,7 +26,7 @@ L'architecture sous Platform Designer (**QSYS**) est donc la suivante :
 
 ### Quartus
 Sur quartus on vient d'abord décrire notre composant `BCD7SEG.vhd` qui permet d'afficher un mot de 4 bit sur un afficheur 7 segments et ensuite rédigé notre fichier *toplevel.vhd* qui nous permet de relier notre composants créer sous qsys à notre bloc **BCD7SEG** à l'aide de signaux. On réaliser ensuite le pin assignements dans le pin planner ou en modifiant le fichier *.qsf* . 
-On réalise ensuite la compilation compléte de notre design et si il n'y a aucune erreur nous pouvons flasher l'archihtecture sur notre carte.
+On réalise ensuite la compilation compléte de notre design et si il n'y a aucune erreur nous pouvons flasher l'architecture sur notre carte.
 
 ### Nios2 Flow
 A partir du terminal Nios2 on vient alors créer notre **Makefile** et générer notre **bsp**.
